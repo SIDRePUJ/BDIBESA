@@ -76,6 +76,7 @@ public abstract class AgentBDI extends RationalAgent {
      */
  
     private static StructBESA setupBDIStruct(StructBESA structBESA) throws ExceptionBESA {
+        /*
         structBESA.addBehavior("DataAndInformationFlowBehavior");
         structBESA.addBehavior("DominantGoalMappingBehavior");
         structBESA.addBehavior("IntermediateBehaviorToDesiresMachine");
@@ -86,6 +87,12 @@ public abstract class AgentBDI extends RationalAgent {
         structBESA.bindGuard("DesireToIntentionInstantiationBehavior", DesireToIntentionInstantiationGuard.class);
         structBESA.bindGuard("EndedTheDesiresMachine",EndedTheDesiresMachineGuard.class);
         structBESA.bindGuard("GarbageCollectionBehavior", GarbageCollectionGuard.class);
+        */
+        structBESA.addBehavior("BDIBehavior");
+        structBESA.bindGuard("BDIBehavior",IntermediateBehaviorToDesiresMachineGuard.class);
+        structBESA.bindGuard("BDIBehavior", DesireToIntentionInstantiationGuard.class);
+        structBESA.bindGuard("BDIBehavior",EndedTheDesiresMachineGuard.class);
+        structBESA.bindGuard("BDIBehavior", GarbageCollectionGuard.class);
         return structBESA;
     }
 
