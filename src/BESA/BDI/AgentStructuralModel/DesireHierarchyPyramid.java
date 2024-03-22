@@ -19,11 +19,14 @@ import java.util.SortedSet;
 import java.util.TreeSet;
 
 /**
- * <p>Class that represents the DesireHierarchyPyramid with the desire instanciated goals</p>
- * @author  SIDRe - Pontificia Universidad Javeriana
- * @author  Takina  - Pontificia Universidad Javeriana
+ * <p>
+ * Class that represents the DesireHierarchyPyramid with the desire instanciated
+ * goals</p>
+ *
+ * @author SIDRe - Pontificia Universidad Javeriana
+ * @author Takina - Pontificia Universidad Javeriana
  * @version 2.0, 11/01/11
- * @since   JDK1.0
+ * @since JDK1.0
  */
 public class DesireHierarchyPyramid implements Serializable {
 
@@ -52,7 +55,7 @@ public class DesireHierarchyPyramid implements Serializable {
         generalHerarchyList.add(requirementGoalsList);
         generalHerarchyList.add(needGoalsList);
         generalHerarchyList.add(attentionCycleGoalsList);
-        
+
     }
 
     public DesireHierarchyPyramid(ContributionComparator comparator, SortedSet<GoalBDI> survivalGoalsList, SortedSet<GoalBDI> dutyGoalsList, SortedSet<GoalBDI> oportunityGoalsList, SortedSet<GoalBDI> requirementGoalsList, SortedSet<GoalBDI> needGoalsList, SortedSet<GoalBDI> attentionCycleGoalsList, GoalBDI currentIntentionGoal) {
@@ -62,7 +65,7 @@ public class DesireHierarchyPyramid implements Serializable {
         this.oportunityGoalsList = oportunityGoalsList;
         this.requirementGoalsList = requirementGoalsList;
         this.needGoalsList = needGoalsList;
-        this.attentionCycleGoalsList= attentionCycleGoalsList;
+        this.attentionCycleGoalsList = attentionCycleGoalsList;
         this.currentIntentionGoal = currentIntentionGoal;
     }
 
@@ -125,7 +128,7 @@ public class DesireHierarchyPyramid implements Serializable {
     public void setAttentionCycleGoalsList(SortedSet<GoalBDI> attentionCycleGoalsList) {
         this.attentionCycleGoalsList = attentionCycleGoalsList;
     }
-    
+
     public synchronized List<SortedSet<GoalBDI>> getGeneralHerarchyList() {
         return generalHerarchyList;
     }
@@ -134,18 +137,21 @@ public class DesireHierarchyPyramid implements Serializable {
         this.generalHerarchyList = generalHerarchyList;
     }
 
-    public void clear(){
+    public void clear() {
         this.dutyGoalsList.clear();
         this.needGoalsList.clear();
         this.oportunityGoalsList.clear();
         this.requirementGoalsList.clear();
         this.survivalGoalsList.clear();
         this.attentionCycleGoalsList.clear();
-      
+
     }
+
     /**
-     * <p> method to get the currentIntentionGoal </p>
-     * @return 
+     * <p>
+     * method to get the currentIntentionGoal </p>
+     *
+     * @return
      */
     public GoalBDI getCurrentIntentionGoal() {
         synchronized (this) {
@@ -160,15 +166,18 @@ public class DesireHierarchyPyramid implements Serializable {
     }
 
     /**
-     * <p>method that dismiss the non feasible or finished goals </p>
+     * <p>
+     * method that dismiss the non feasible or finished goals </p>
+     *
      * @param believes
-     * @param machineParamsBDI 
+     * @param machineParamsBDI
      */
     public void callGarbageCollector(Believes believes, BDIMachineParams machineParamsBDI) throws KernellAgentEventExceptionBESA {
-        synchronized(this){
+        synchronized (this) {
             for (Set<GoalBDI> set : this.getGeneralHerarchyList()) {
                 Iterator<GoalBDI> setIterator = set.iterator();
                 while (setIterator.hasNext()) {
+                    System.out.println("Garbage Collector Funcionando");
                     GoalBDI currentElement = setIterator.next();
                     GoalBDITypes type = currentElement.getType();
                     switch (type) {
@@ -209,19 +218,37 @@ public class DesireHierarchyPyramid implements Serializable {
     }
 
     /**
-     * <p> to String overrided to log using </p>
-     * @return 
+     * <p>
+     * to String overrided to log using </p>
+     *
+     * @return
      */
     @Override
     public String toString() {
         StringBuilder resultValue = new StringBuilder();
+
+        // Encabezados
+        resultValue.append(String.format("%-25s %-15s %-15s %-15s %-15s %-15s %-15s%n",
+                "NAME", "TYPE", "CONTRIBUTION", "DETECTION",
+                "FEASIBLE", "PLAUSIBLE", "ID"));
+
+        // Línea separadora
+        resultValue.append("--------------------------------------------------------------------------------------\n");
+
         for (Set<GoalBDI> set : this.getGeneralHerarchyList()) {
-            Iterator<GoalBDI> setIterator = set.iterator();
-            while (setIterator.hasNext()) {
-                GoalBDI currentElement = setIterator.next();
-                resultValue.append(currentElement.getDescription()).append(currentElement.getId()).append("   TIPO:   ").append(currentElement.getType().getName()).append("   CONTRIBUTION      ").append(currentElement.getContributionValue()).append("    DETECTION    ").append(currentElement.getDetectionValue()).append("   FEASIBLE   ").append(currentElement.getViabilityValue()).append("   PLAUSIBLE   ").append(currentElement.getPlausibilityLevel()).append("\n");
+            for (GoalBDI currentElement : set) {
+                resultValue.append(String.format("%-25s %-15s %-15.2f %-15.2f %-15.2f %-15.2f %-15s%n",
+                        currentElement.getDescription(),
+                        currentElement.getType().getName(),
+                        currentElement.getContributionValue(),
+                        currentElement.getDetectionValue(),
+                        currentElement.getViabilityValue(),
+                        currentElement.getPlausibilityLevel(),
+                        currentElement.getId()));
             }
         }
+
         return resultValue.toString();
     }
+
 }

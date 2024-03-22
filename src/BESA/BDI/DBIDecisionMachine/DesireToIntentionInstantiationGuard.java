@@ -121,19 +121,10 @@ public class DesireToIntentionInstantiationGuard extends GuardBESA {
             /** AttentionCycle*/
             for (GoalBDI attentionCycle : potencialGoalStructure.getAttentionCycleGoalsList()) {
                 attentionCycle.setDetectionValue(attentionCycle.detectGoal(believes));
-                //ReportBESA.debug(attentionCycle.getDescription()
-                //        + " attentionCycle.getDetectionValue() " + attentionCycle.getDetectionValue() 
-                //        + " > paramsBDI.getAttentionCycleThreshold() " + paramsBDI.getAttentionCycleThreshold());
                 if (attentionCycle.getDetectionValue() > paramsBDI.getAttentionCycleThreshold()) {
                     attentionCycle.setPlausibilityLevel(attentionCycle.evaluatePlausibility(believes));
-                //    ReportBESA.debug(attentionCycle.getDescription()
-                //            + " attentionCycle.getPlausibilityLevel() " + attentionCycle.getPlausibilityLevel() 
-                //            + " > paramsBDI.getAttentionCycleThreshold() " + paramsBDI.getAttentionCycleThreshold());
                     if (attentionCycle.getPlausibilityLevel() > paramsBDI.getAttentionCycleThreshold()) {
                         attentionCycle.setViabilityValue(attentionCycle.evaluateViability(believes));
-                //        ReportBESA.debug(attentionCycle.getDescription()
-                //                + " attentionCycle.getViabilityValue() " + attentionCycle.getViabilityValue()
-                //                + " > paramsBDI.getAttentionCycleThreshold() " + paramsBDI.getAttentionCycleThreshold());
                         if (attentionCycle.getViabilityValue() > paramsBDI.getAttentionCycleThreshold()) {
                             attentionCycle.setContributionValue(attentionCycle.evaluateContribution(stateBDI));
                             paramsBDI.getPyramidGoals().getAttentionCycleGoalsList().add(attentionCycle);
@@ -144,11 +135,8 @@ public class DesireToIntentionInstantiationGuard extends GuardBESA {
             
             paramsBDI.setIntention(paramsBDI.getPyramidGoals().getCurrentIntentionGoal());
             if (paramsBDI.getIntention() != null) {
-                //ReportBESA.debug("evaluating evaluateMappingViability: " + paramsBDI.getIntention().getDescription());
                 if (paramsBDI.getIntention().evaluateMappingViability(paramsBDI, believes)) {
-                    //ReportBESA.debug("evaluating predictResultUnlegality: " + paramsBDI.getIntention().getDescription());
                     if (paramsBDI.getIntention().predictResultUnlegality(stateBDI)) {
-                        //ReportBESA.debug("cambiando a: " + paramsBDI.getIntention().getRole());
                         EventBESA eventBesa = new EventBESA(ChangeRationalRoleGuard.class.getName(), paramsBDI.getIntention().getRole());
                         AgHandlerBESA agHandlerBESA = agentBDI.getAdmLocal().getHandlerByAlias(agentBDI.getAlias());
                         agHandlerBESA.sendEvent(eventBesa);
