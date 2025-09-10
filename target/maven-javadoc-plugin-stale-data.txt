@@ -1,0 +1,60 @@
+-Xdoclint:none
+@options
+@packages
+-classpath
+'C:/Users/jairo/Proyectos/simulador/BDIBESA/../KernelBESA/target/kernel-besa-3.5.1.jar;C:/Users/jairo/Proyectos/simulador/BDIBESA/../RationalBESA/target/rational-besa-3.5.jar'
+-encoding
+'UTF-8'
+-protected
+-source
+'21'
+-sourcepath
+'C:/Users/jairo/Proyectos/simulador/BDIBESA/src;C:/Users/jairo/Proyectos/simulador/BDIBESA/target/generated-sources/annotations'
+-Xdoclint:none
+-author
+-bottom
+'Copyright &#169; 2025. All rights reserved.'
+-charset
+'UTF-8'
+-d
+'C:/Users/jairo/Proyectos/simulador/BDIBESA/target/apidocs'
+-docencoding
+'UTF-8'
+-doctitle
+'BDIBESA 3.5 API'
+-use
+-version
+-windowtitle
+'BDIBESA 3.5 API'
+BESA.BDI.AgentStructuralModel.Agent
+BESA.BDI.AgentStructuralModel.Agent.Builder
+BESA.BDI.AgentStructuralModel
+BESA.BDI.AgentStructuralModel.Functions
+BESA.BDI.DBIDecisionMachine.Data
+BESA.BDI.DBIDecisionMachine
+BESA.BDI.DBIDecisionMachine.Timer
+C:\Users\jairo\Proyectos\simulador\BDIBESA\..\KernelBESA\target\kernel-besa-3.5.1.jar = 1757471806660
+C:\Users\jairo\Proyectos\simulador\BDIBESA\..\RationalBESA\target\rational-besa-3.5.jar = 1757472449744
+C:\Users\jairo\Proyectos\simulador\BDIBESA\src = 1757472273800
+C:\Users\jairo\Proyectos\simulador\BDIBESA\target\generated-sources\annotations = 1757472527269
+C:\Users\jairo\Proyectos\simulador\BDIBESA\target\apidocs\allclasses-index.html = 1757472531094
+C:\Users\jairo\Proyectos\simulador\BDIBESA\target\apidocs\allpackages-index.html = 1757472531096
+C:\Users\jairo\Proyectos\simulador\BDIBESA\target\apidocs\copy.svg = 1757472531136
+C:\Users\jairo\Proyectos\simulador\BDIBESA\target\apidocs\element-list = 1757472530920
+C:\Users\jairo\Proyectos\simulador\BDIBESA\target\apidocs\help-doc.html = 1757472531131
+C:\Users\jairo\Proyectos\simulador\BDIBESA\target\apidocs\index-all.html = 1757472531121
+C:\Users\jairo\Proyectos\simulador\BDIBESA\target\apidocs\index.html = 1757472531079
+C:\Users\jairo\Proyectos\simulador\BDIBESA\target\apidocs\link.svg = 1757472531138
+C:\Users\jairo\Proyectos\simulador\BDIBESA\target\apidocs\member-search-index.js = 1757472531101
+C:\Users\jairo\Proyectos\simulador\BDIBESA\target\apidocs\module-search-index.js = 1757472531096
+C:\Users\jairo\Proyectos\simulador\BDIBESA\target\apidocs\overview-summary.html = 1757472531126
+C:\Users\jairo\Proyectos\simulador\BDIBESA\target\apidocs\overview-tree.html = 1757472531076
+C:\Users\jairo\Proyectos\simulador\BDIBESA\target\apidocs\package-search-index.js = 1757472531099
+C:\Users\jairo\Proyectos\simulador\BDIBESA\target\apidocs\script.js = 1757472531135
+C:\Users\jairo\Proyectos\simulador\BDIBESA\target\apidocs\search-page.js = 1757472531141
+C:\Users\jairo\Proyectos\simulador\BDIBESA\target\apidocs\search.html = 1757472531124
+C:\Users\jairo\Proyectos\simulador\BDIBESA\target\apidocs\search.js = 1757472531139
+C:\Users\jairo\Proyectos\simulador\BDIBESA\target\apidocs\serialized-form.html = 1757472530989
+C:\Users\jairo\Proyectos\simulador\BDIBESA\target\apidocs\stylesheet.css = 1757472531133
+C:\Users\jairo\Proyectos\simulador\BDIBESA\target\apidocs\tag-search-index.js = 1757472531102
+C:\Users\jairo\Proyectos\simulador\BDIBESA\target\apidocs\type-search-index.js = 1757472531100
